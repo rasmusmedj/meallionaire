@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+
+
+import 'package:meallionaire/data/dummy_data.dart';
 import 'package:meallionaire/main.dart';
+import 'package:meallionaire/widgets/category_grid_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
@@ -11,27 +15,16 @@ class CategoriesScreen extends StatelessWidget {
         title: const Text('Categories'),
       ),
       body: GridView(
+        padding: const EdgeInsets.all(24),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 3 / 2,
           crossAxisSpacing: 20,
           mainAxisSpacing: 20,
         ),
-        children: const [
-          Text(
-            'data',
-            style: TextStyle(color: Colors.white),
-          ),
-          Text('data1',
-            style: TextStyle(color: Colors.white),),
-          Text('data2',
-            style: TextStyle(color: Colors.white),),
-          Text('data3',
-            style: TextStyle(color: Colors.white),),
-          Text('data4',
-            style: TextStyle(color: Colors.white),),
-          Text('data5',
-            style: TextStyle(color: Colors.white),),
+        children: [
+          for (final category in availableCategories)
+            CategoryGridItem(category: category)
         ],
       ),
     );
